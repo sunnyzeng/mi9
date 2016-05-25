@@ -16,10 +16,9 @@ namespace Test
             ShowsController controller = new ShowsController();
  
             JsonRequest request = new JsonRequest();
-            JsonConvert.DeserializeObject<JsonRequest>("dsfkhsdfjsf");
             var response = controller.FilterShows(request);
 
-            Assert.AreEqual(response, HttpStatusCode.BadRequest);
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
         }
     }
 }
