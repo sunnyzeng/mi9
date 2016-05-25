@@ -21,10 +21,8 @@ namespace CodingChallenge.Controllers
             if (model == null) { 
                 response=Request.CreateResponse(HttpStatusCode.BadRequest, new { error = "Could not decode request: JSON parsing failed" });
             }
-
-
             // filter the shows
-            if (model.payload != null)
+            else if (model.payload != null)
             {
                 var shows = model.payload.Where(x => x.drm == true && x.episodeCount > 0)
                             .Select(x=> new Show(){image = x.image.showImage, slug = x.slug, title = x.title}).ToList();
